@@ -1,0 +1,54 @@
+# Example 10: Intentionally Absurd/Esoteric
+# "The Clock That Counts Shadows"
+# Measures how long darkness persists at a coordinate
+
+FRAME 0
+shadow_clock = 0
+max_shadow = 0
+shadow_start = -1
+
+LOOP 0 999 {
+    PIXEL 100, 100
+    brightness = _pixel_val
+
+    IF brightness < 10 {  # "darkness threshold"
+        IF shadow_start == -1 {
+            shadow_start = t
+        }
+        shadow_clock = shadow_clock + 1
+    } ELSE {
+        IF shadow_start != -1 {
+            duration = t - shadow_start
+            IF duration > max_shadow {
+                max_shadow = duration
+            }
+            EMIT "shadow_ended" shadow_start t duration
+            shadow_start = -1
+        }
+        shadow_clock = 0
+    }
+
+    # Every 100 frames, report
+    IF t % 100 == 0 {
+        EMIT "shadow_report" t shadow_clock max_shadow
+    }
+
+    NEXT
+}
+
+EMIT "final_shadow_stats" max_shadow shadow_clock
+
+# Now go backwards in time (PREV) to find the "first light"
+FRAME 999
+WHILE t > 0 {
+    PIXEL 100, 100
+    IF _pixel_val > 200 {
+        EMIT "first_light_found" t _pixel_val
+        BREAK  # not implemented but conceptually...
+    }
+    PREV
+}
+
+# Emit the "time crystal" - a snapshot of all time at once
+SNAPSHOT
+EMIT "time_crystal" "complete"

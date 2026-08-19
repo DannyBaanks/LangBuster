@@ -1,0 +1,18 @@
+# Example 9: Frame Transformation
+# Modify frame data (write to B channel) and observe effects
+
+FRAME 0
+# Invert a region in each frame
+LOOP 0 99 {
+    REGION 100, 100, 200, 200
+    # _region_b contains the region data
+    # Write inverted values back
+    # Note: this is conceptual - actual write needs coord iteration
+    EMIT "frame_transform" t
+    NEXT
+}
+
+# Alternative: single frame transformation
+FRAME 50
+REGION 50, 50, 150, 150
+EMIT "transform_frame_50" _region_b

@@ -1,0 +1,11 @@
+# Example 2: Detect Movement
+# Compare consecutive frames to find motion
+
+FRAME 0
+LOOP 1 99 {
+    DELTA 320, 240
+    IF _delta > 10 {
+        EMIT "motion_detected" t _delta
+    }
+    NEXT
+}

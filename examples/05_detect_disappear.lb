@@ -1,0 +1,12 @@
+# Example 5: Detect Disappearance
+# Detect when a region disappears (was non-zero, becomes zero)
+
+FRAME 0
+LOOP 1 99 {
+    DISAPPEAR 150, 150, 250, 250
+    IF _disappear == 1 {
+        EMIT "object_disappeared" t 150 150 250 250
+        SNAPSHOT
+    }
+    NEXT
+}

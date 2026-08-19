@@ -1,0 +1,51 @@
+# Brainfuck "Hello World" implemented in LangBuster
+# Demonstrates Turing-completeness via BF equivalence
+
+# Tape cells (using tape memory)
+# >++++++++[<+++++++++>-]<.
+# >++++[<+++++++>-]<+.
+# +++++++..
+# +++.
+# >++++++++[<++++>-]<.
+# >++++++++++[<++++++++>-]<---.
+# <+++++.
+# --------.
+# +++.
+# -------.
+# --------.
+# >++++[<++++++++>-]<+.
+
+# Simplified: just demonstrate tape operations
+
+# Initialize tape cell 0 = 72 (H)
+LOAD_I R0, 72
+TAPE_WRITE R0
+
+# Output it
+TAPE_READ R1
+EMIT R1
+
+# Move right, set cell 1 = 101 (e)
+TAPE_R
+LOAD_I R0, 101
+TAPE_WRITE R0
+TAPE_READ R1
+EMIT R1
+
+# Set cell 2 = 108 (l)
+TAPE_R
+LOAD_I R0, 108
+TAPE_WRITE R0
+TAPE_READ R1
+EMIT R1
+TAPE_READ R1
+EMIT R1
+
+# Set cell 3 = 111 (o)
+TAPE_R
+LOAD_I R0, 111
+TAPE_WRITE R0
+TAPE_READ R1
+EMIT R1
+
+HALT

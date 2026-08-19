@@ -1,0 +1,7 @@
+# Example 1: Inspect Single Frame
+# Load frame 42 and inspect pixel at center
+
+FRAME 42
+INSPECT 320, 240, 42
+EMIT "frame_42_inspected" _inspect
+SNAPSHOT

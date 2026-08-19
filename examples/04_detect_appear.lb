@@ -1,0 +1,12 @@
+# Example 4: Detect Appearing Object/Event
+# Detect when a region appears (was zero, becomes non-zero)
+
+FRAME 0
+LOOP 1 99 {
+    APPEAR 100, 100, 200, 200
+    IF _appear == 1 {
+        EMIT "object_appeared" t 100 100 200 200
+        SNAPSHOT
+    }
+    NEXT
+}

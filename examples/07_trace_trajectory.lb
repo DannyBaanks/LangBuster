@@ -1,0 +1,14 @@
+# Example 7: Trace Trajectory
+# Trace a particle's path across frames (requires particle events in trace)
+
+FRAME 0
+# Spawn a particle at frame 0 center (conceptual - uses trace data)
+PARTICLE 0
+TRACE PARTICLE 0
+
+# Also track motion vectors along path
+LOOP 0 99 {
+    MOTION 300, 200, 340, 240
+    EMIT "motion_along_path" t _motion
+    NEXT
+}

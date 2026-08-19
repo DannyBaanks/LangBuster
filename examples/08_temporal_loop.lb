@@ -1,0 +1,21 @@
+# Example 8: Temporal Loop
+# Process frames in a loop with state accumulation
+
+FRAME 0
+accumulator = 0
+
+LOOP 0 99 {
+    # Read pixel at (x,y) for each frame
+    PIXEL 160, 120
+    accumulator = accumulator + _pixel_val
+
+    # Every 10 frames, emit checkpoint
+    IF t % 10 == 0 {
+        EMIT "checkpoint" t accumulator
+    }
+
+    NEXT
+}
+
+EMIT "final_sum" accumulator
+SNAPSHOT

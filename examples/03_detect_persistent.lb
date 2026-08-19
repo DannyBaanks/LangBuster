@@ -1,0 +1,13 @@
+# Example 3: Detect Persistent Region
+# Check if a region persists (non-zero) across multiple frames
+
+FRAME 0
+# Define region of interest (100x100 at center)
+REGION 270, 190, 370, 290, 0, 99
+# Check persistence across frames 0-99
+PERSIST 270, 190, 370, 290, 0, 99
+IF _persist == 1 {
+    EMIT "region_persists" "center_region" 0 99
+} ELSE {
+    EMIT "region_not_persistent" "center_region" 0 99
+}

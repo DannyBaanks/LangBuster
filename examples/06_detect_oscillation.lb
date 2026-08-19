@@ -1,0 +1,33 @@
+# Example 6: Detect Oscillating Visual Pattern
+# Detect periodic brightness changes in a pixel/region
+
+FRAME 0
+# Track pixel at center over time
+prev_val = 0
+oscillations = 0
+last_dir = 0  # 1 = up, -1 = down
+
+LOOP 1 99 {
+    PIXEL 320, 240
+    curr = _pixel_val
+
+    # Detect direction change (oscillation)
+    IF curr > prev_val {
+        dir = 1
+    } ELSE IF curr < prev_val {
+        dir = -1
+    } ELSE {
+        dir = 0
+    }
+
+    IF last_dir != 0 AND dir != 0 AND dir != last_dir {
+        oscillations = oscillations + 1
+        EMIT "oscillation_detected" t _pixel_val oscillations
+    }
+
+    prev_val = curr
+    last_dir = dir
+    NEXT
+}
+
+EMIT "total_oscillations" oscillations
