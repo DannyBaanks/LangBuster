@@ -1,0 +1,4 @@
+FRAME 0
+PIXEL 960, 540, 0
+EMIT "doorman_webmcp_video_verified" _pixel_val
+SNAPSHOT

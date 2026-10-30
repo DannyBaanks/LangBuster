@@ -1,0 +1,4 @@
+FRAME 0
+PIXEL 100, 100, 0
+EMIT "video_capsule_verified" _pixel_val
+SNAPSHOT
