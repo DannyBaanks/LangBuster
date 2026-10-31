@@ -444,6 +444,15 @@ python -m pytest tests/test_langbuster.py -v
 
 ---
 
+## Archivos añadidos al repositorio (2026-10-31)
+
+El commit `ddf36d7` versiona material que estaba sin control de versiones:
+
+- `GUIA.md` — guía de uso.
+- `langbuster/capsule.py` y `tests/test_lbb_capsule.py` — soporte de cápsulas y sus pruebas.
+- `examples/`: `video_capsule_demo.lb`, `reporelay_video.lb`, `doorman_webmcp_video.lb`.
+
+
 ## 13. Licencia / Espíritu
 
 LangBuster es un **esolang experimental**. No es un procesador de video convencional.
